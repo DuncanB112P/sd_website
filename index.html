@@ -613,56 +613,49 @@
   }
 
   /* SKILLS */
-  .skills-bars {
+  .skills-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem 4rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    align-items: stretch;
   }
 
-  .skill-bar {
+  .skill-category {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .skill-category:hover {
+    border-color: var(--accent);
+  }
+
+  .skill-cat-header {
+    display:block;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .skill-cat-items {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .skill-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .skill-name {
+  .skill-cat-items span {
     font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     color: var(--text);
-    letter-spacing: 0.05em;
   }
-
-  .skill-pct {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--muted);
-  }
-
-  .skill-track {
-    height: 3px;
-    background: var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .skill-fill {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .skill-fill.animated { transform: scaleX(1); }
 
   /* RESUME SECTION */
   .resume-section {
@@ -718,7 +711,7 @@
   }
 
   .tip-title {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Exo', sans-serif;
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--bright);
@@ -1113,47 +1106,80 @@
 <section id="skills" class="fade-up">
   <div class="section-label">03 — Skills</div>
   <h2>Technical <em>proficiency</em><br>across the stack.</h2>
-  <div class="skills-bars" id="skills-bars">
-    <div class="skill-bar">
-      <div class="skill-header"><span class="skill-name">Azure Cloud</span><span class="skill-pct">90%</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="0.90"></div></div>
+  <div class="skills-grid">
+
+    <div class="skill-category">
+      <div class="skill-cat-header">
+        <span class="dot"></span>Cloud Platforms
+      </div>
+      <div class="skill-cat-items">
+        <span>Azure</span>
+        <span>AWS</span>
+      </div>
     </div>
-    <div class="skill-bar">
-      <div class="skill-header"><span class="skill-name">Terraform / IaC</span><span class="skill-pct">92%</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="0.92"></div></div>
+
+    <div class="skill-category">
+      <div class="skill-cat-header">
+        <span class="dot"></span>Containers &amp; OS
+      </div>
+      <div class="skill-cat-items">
+        <span>Docker</span>
+        <span>Linux</span>
+        <span>Windows</span>
+        <span>Kubernetes</span>
+      </div>
     </div>
-    <div class="skill-bar">
-      <div class="skill-header"><span class="skill-name">AWS Cloud</span><span class="skill-pct">85%</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="0.85"></div></div>
+
+    <div class="skill-category">
+      <div class="skill-cat-header">
+        <span class="dot"></span>Data &amp; Scripting
+      </div>
+      <div class="skill-cat-items">
+        <span>Python</span>
+        <span>Bash</span>
+        <span>PowerShell</span>
+        <span>SQL</span>
+      </div>
     </div>
-    <div class="skill-bar">
-      <div class="skill-header"><span class="skill-name">Jenkins CI/CD</span><span class="skill-pct">88%</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="0.88"></div></div>
+
+    <div class="skill-category">
+      <div class="skill-cat-header">
+        <span class="dot"></span>IaC &amp; Automation
+      </div>
+      <div class="skill-cat-items">
+        <span>Terraform</span>
+        <span>AWS CloudFormation</span>
+        <span>ARM Templates</span>
+        <span>Bash</span>
+        <span>Python</span>
+        <span>PowerShell</span>
+      </div>
     </div>
-    <div class="skill-bar">
-      <div class="skill-header"><span class="skill-name">Python</span><span class="skill-pct">82%</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="0.82"></div></div>
+
+    <div class="skill-category">
+      <div class="skill-cat-header">
+        <span class="dot"></span>CI/CD &amp; Deploy
+      </div>
+      <div class="skill-cat-items">
+        <span>Jenkins</span>
+        <span>GitHub Actions</span>
+        <span>Octopus Deploy</span>
+        <span>Azure DevOps</span>
+        <span>AWS Code Build & CodePipeline</span>
+      </div>
     </div>
-    <div class="skill-bar">
-      <div class="skill-header"><span class="skill-name">Docker / Containers</span><span class="skill-pct">87%</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="0.87"></div></div>
+
+    <div class="skill-category">
+      <div class="skill-cat-header">
+        <span class="dot"></span>Data &amp; Monitoring
+      </div>
+      <div class="skill-cat-items">
+        <span>AWS Cloudwatch</span>
+        <span>Datadog</span>
+        <span>Azure Monitor</span>
+      </div>
     </div>
-    <div class="skill-bar">
-      <div class="skill-header"><span class="skill-name">Bash / Linux</span><span class="skill-pct">88%</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="0.88"></div></div>
-    </div>
-    <div class="skill-bar">
-      <div class="skill-header"><span class="skill-name">GitHub Actions</span><span class="skill-pct">85%</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="0.85"></div></div>
-    </div>
-    <div class="skill-bar">
-      <div class="skill-header"><span class="skill-name">SQL</span><span class="skill-pct">78%</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="0.78"></div></div>
-    </div>
-    <div class="skill-bar">
-      <div class="skill-header"><span class="skill-name">Octopus Deploy</span><span class="skill-pct">80%</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="0.80"></div></div>
-    </div>
+
   </div>
 </section>
 
